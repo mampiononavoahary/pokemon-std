@@ -137,8 +137,15 @@ li{
     font-weight: 300;
     animation: lights 5s 750ms linear infinite;
   }
+  .first{
+    display: block;
+    margin: auto;
+  }
   .details{
     width: 500px;
     height: 700px;
     background-color: azure;
+    position: fixed;
+    margin-left: 37%;
+    margin-top: 100px;
   }

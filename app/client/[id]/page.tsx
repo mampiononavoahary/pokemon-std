@@ -30,9 +30,9 @@ export default function ClientPokemonDetails({ params }: { params: { id: number 
   }
 
   return (
-    <div>
-      <h1>Pokemon Details</h1>
-      <div className='container'>
+    <div className='container'>
+      <h1 className='h1'>Pokemon Details</h1>
+      <div>
       <div className='details'>
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt={pokemonData.name} />
           <p>Name: {pokemonData.name}</p>

@@ -38,10 +38,11 @@
     margin-top: 100px;
     width: 300px;
     height: 250px;
-    background-color: rgb(196, 193, 189);
+    border-radius: 5px;
+    background-color: rgba(125, 133, 136, 0.253);
 }
 .pokemon:hover{
-    box-shadow: 10px 10px 10px beige;
+    box-shadow: 10px 10px 10px rgb(71, 71, 70);
 }
 .btn{
     width: 100px;
@@ -49,14 +50,14 @@
     border: none;
     display: block;
     margin: auto;
-    background-color: rgb(7, 250, 7);
+    background-color: rgb(102, 106, 107);
     cursor: pointer;
 }
 p{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: rgb(138, 132, 132);
 }
 .image{
     width: 200px;
@@ -144,7 +145,7 @@ li{
   .details{
     width: 500px;
     height: 700px;
-    background-color: azure;
+    background-color: rgba(125, 133, 136, 0.253);
     position: fixed;
     margin-left: 37%;
     margin-top: 100px;

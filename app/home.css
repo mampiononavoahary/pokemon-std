@@ -5,12 +5,14 @@
 .nav{
     display: flex;
     flex-direction: row;
+    position: fixed;
     background-color: beige;
     color: black;
     justify-content: center;
     gap: 200px;
     align-items: center;
     height: 60px;
+    width: 100%;
 }
 .logo{
     position: absolute;
@@ -25,11 +27,12 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 40px;
 }
 h1{
     position: fixed;
     margin-left: 45%;
+    margin-top: 60px;
 }
 .pokemon{
     margin-top: 100px;
@@ -47,7 +50,7 @@ h1{
     display: block;
     margin: auto;
     background-color: rgb(7, 250, 7);
-
+    cursor: pointer;
 }
 p{
     display: flex;

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+"use client"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -11,20 +11,19 @@ interface Pokemon {
   order: number;
 }
 
-export default function ClientPokemonDetails({params}:{params: {order: number}}) {
-  const router = useRouter();
-  const { order } = router.query;
+export default function ClientPokemonDetails({ params }: { params: { id: number } }) {
+  const { id } = params;
   const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (order) {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${order}`);
+      if (id) {
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
         setPokemonData(res.data);
       }
     };
     fetchData();
-  }, [order]);
+  }, [id]);
 
   if (!pokemonData) {
     return <div>Loading...</div>;
@@ -33,12 +32,16 @@ export default function ClientPokemonDetails({params}:{params: {order: number}})
   return (
     <div>
       <h1>Pokemon Details</h1>
-      <img src={pokemonData.sprites.front_default} alt={pokemonData.name} />
-      <p>Name: {pokemonData.name}</p>
-      <p>Height: {pokemonData.height}</p>
-      <p>Weight: {pokemonData.weight}</p>
-      <p>Types: {pokemonData.types.map((type) => type.type.name).join(', ')}</p>
-      <p>Order: {pokemonData.order}</p>
+      <div className='container'>
+      <div className='details'>
+          <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt={pokemonData.name} />
+          <p>Name: {pokemonData.name}</p>
+          <p>Height: {pokemonData.height}</p>
+          <p>Weight: {pokemonData.weight}</p>
+          <p>Types: {pokemonData.types.map((type) => type.type.name).join(', ')}</p>
+          <p>Order: {pokemonData.order}</p>
+      </div>
+      </div>
     </div>
   );
 }

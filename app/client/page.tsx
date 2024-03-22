@@ -23,7 +23,7 @@ export default function ClientHome() {
 
   return (
     <div>
-      <h1>Client Home</h1>
+      <h1 className='h1'>Client Home</h1>
       <ul className='card'>
         {pokemonList.map((pokemon, index) => (
            <li key={index}>

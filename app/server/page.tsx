@@ -1,44 +1,44 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import axios from 'axios';
-import '../home.css';
+import React from "react";
+import SimpleSSRComponent from "@/components/server/server";
+
 
 interface Pokemon {
-  name: string;
-  url: string; // Fix type here
+    name: string;
+    url: string;
 }
 
-export default function ClientHome() {
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+let pokemonData: Pokemon[] = [];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=50&offset=0');
-        setPokemonList(res.data.results);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []); // Run effect only once on component mount
+const fetchData = async () => {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        pokemonData = data.results;
+        render();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        pokemonData = [];
+        render();
+    }
+};
 
-  return (
-    <div>
-      <h1>Client Home</h1>
-      <ul className='card'>
-        {pokemonList.map((pokemon, index) => (
-          <li key={index}>
-            <Link href={`/server/${index + 1}`}>
-              <div className='pokemon'>
-                <img className='image' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} alt={pokemon.name} />
-                <p>{pokemon.name}</p>
-                <button className='btn'>details</button>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+const render = () => {
+    forceUpdatePage && forceUpdatePage();
+};
+let forceUpdatePage: (() => void) | null = null;
+export const setForceUpdatePage = (update: () => void) => {
+    forceUpdatePage = update;
+};
+
+fetchData();
+
+export default function Page() {
+    return (
+        <div>
+           <SimpleSSRComponent pokemonData={pokemonData} />
+        </div>
+    );
 }

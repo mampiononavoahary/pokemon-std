@@ -27,7 +27,7 @@ export default function ClientHome() {
       <ul className='card'>
         {pokemonList.map((pokemon, index) => (
            <li key={index}>
-           <Link href={`/client/${index + 1}`}>
+           <Link href={`/client/detail/${index + 1}`}>
              <div className='pokemon'>
                <img className='image' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} alt={pokemon.name} />
                <p>{pokemon.name}</p>

@@ -1,0 +1,70 @@
+.main{
+    display: flex;
+    flex-direction: column;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    background-color: beige;
+    color: black;
+    justify-content: center;
+    gap: 200px;
+    align-items: center;
+    height: 60px;
+}
+.logo{
+    position: absolute;
+    display: flex;
+    color: rgb(116, 76, 24);
+    font-size: 20px;
+    left: 0;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+h1{
+    position: fixed;
+    margin-left: 45%;
+}
+.pokemon{
+    margin-top: 100px;
+    width: 300px;
+    height: 250px;
+    background-color: rgb(196, 193, 189);
+}
+.pokemon:hover{
+    box-shadow: 10px 10px 10px beige;
+}
+.btn{
+    width: 100px;
+    height: 50px;
+    border: none;
+    display: block;
+    margin: auto;
+    background-color: rgb(7, 250, 7);
+
+}
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+.image{
+    width: 200px;
+    height: 150px;
+}
+.hello{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+li{
+    list-style: none;
+}
